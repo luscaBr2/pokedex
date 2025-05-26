@@ -1,0 +1,111 @@
+body {
+    background-image: url("../img/bkg00.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    z-index: -100;
+}
+
+/* Deixa o backgroud mais escuro */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    z-index: -99;
+}
+
+/* Header e campo de pesquisa */
+header {
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: #fff;
+}
+
+.logo-pokedex img {
+    max-width: 80px;
+    margin: auto 0 auto 2rem;
+    margin-top: 10px;
+}
+
+#pesquisa {
+    position: fixed;
+    right: 10%;
+    /* Centraliza a caixa de pesquisa no centro do header*/
+    transform: translateY(50%);
+    padding: 0.5rem;
+    border-radius: 20px;
+}
+
+.sugestoes-pesquisa {
+    position: relative;
+    display: none;
+}
+
+main {
+    margin-top: 120px;
+    text-align: center;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* .container-pokemon {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.img-pokemon {
+    display: flex;
+    object-fit: cover;
+    background-color: #fff;
+    margin: 0 10px ;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.img-pokemon img {
+    width: 150px;
+    image-rendering: pixelated;
+} */
+
+/* .container-pokemon {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+} */
+
+.container-pokemon {
+  display: flex;
+  gap: 15px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: start;
+  align-content: start;
+}
+
+.pokemon-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 30px 35px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+  cursor: pointer;
+}
+
+.pokemon-card img {
+  width: 115px;
+  height: 115px;
+  image-rendering: pixelated;
+  margin: auto;
+}
