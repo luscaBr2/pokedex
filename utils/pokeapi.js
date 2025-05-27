@@ -48,6 +48,8 @@ async function fetchAllPokemons() {
       
       pokemons.push(pokemonData);
     });
+  } else {
+    alert("Erro ao acessar a API | Erro: " + APIResponse.status);
   }
 
   // se a var pokemons não for alterada, retorna o valor que já está guardado, se for vazio, apresenta um erro
