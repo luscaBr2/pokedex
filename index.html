@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,69 +8,39 @@
 
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/index.css">
+
+    <script src="utils/pokeapi.js" defer></script>
+    <script src="utils/sugestoesPesquisa.js" defer></script>
 </head>
+
 <body>
     <header>
         <figure class="logo-pokedex">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/512px-Pok%C3%A9_Ball_icon.svg.png" alt="Pokebola">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/512px-Pok%C3%A9_Ball_icon.svg.png"
+                alt="Pokebola">
         </figure>
 
-        <input type="search" id="pesquisa" placeholder="Buscar pokémon">
-        <div id="sugestoes-pesquisa" class="hidden">
-            <p>sugestão 1</p>
-            <p>sugestão 2</p>
-            <p>sugestão 3</p>
+        <div class="container-pesquisa">
+            <input autocomplete="off" type="search" id="pesquisa" placeholder="Buscar pokémon">
+            <div id="sugestoes-pesquisa" class="hidden">
+        
+            </div>
         </div>
     </header>
-    
     <main>
-        
         <div class="container-pokemon">
+            
             <div class="pokemon-card">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif" alt="">
-                <h3>Bulba</h3>
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/4.gif"
+                    id="pokemon-image">
+                <h3>
+                    <span id="pokemon-id"></span>
+                    <span id="pokemon-name"></span>
+                </h3>
             </div>
-            <div class="pokemon-card">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif" alt="">
-                <h3>Bulba</h3>
-            </div>
-            <div class="pokemon-card">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif" alt="">
-                <h3>Bulba</h3>
-            </div>
-            <div class="pokemon-card">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif" alt="">
-                <h3>Bulba</h3>
-            </div>
-            <div class="pokemon-card">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif" alt="">
-                <h3>Bulba</h3>
-            </div>
-            <div class="pokemon-card">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif" alt="">
-                <h3>Bulba</h3>
-            </div>
-            <div class="pokemon-card">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif" alt="">
-                <h3>Bulba</h3>
-            </div>
-            <div class="pokemon-card">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif" alt="">
-                <h3>Bulba</h3>
-            </div>
-            <div class="pokemon-card">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif" alt="">
-                <h3>Bulba</h3>
-            </div>
-            <div class="pokemon-card">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif" alt="">
-                <h3>Bulba</h3>
-            </div>
-
+            
         </div>
-        
-        
-        
     </main>
 </body>
+
 </html>
