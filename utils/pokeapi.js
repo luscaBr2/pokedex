@@ -3,6 +3,7 @@
 const pokemonImage = document.getElementById("pokemon-image");
 const pokemonName = document.getElementById("pokemon-name");
 const pokemonID = document.getElementById("pokemon-id");
+const mainContainer = document.querySelector(".container-pokemon");
 let pokemons = []; // destinado a guardar todos os pokemons
 
 // busca um pokemon pela url
@@ -33,32 +34,53 @@ async function fetchPokemon(pokemon) {
   }
 }
 
-// busca todos os pokemons de uma vez
+let teste;
+
 async function fetchAllPokemons() {
-  const APIResponse = await fetch(
-    `https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0`
-  );
-
-  if (APIResponse.status === 200) {
+  try {
+    const APIResponse = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=151&offset=0`);
+    if (!APIResponse.ok) throw new Error(`HTTP error! status: ${APIResponse.status}`);
+    
     const data = await APIResponse.json();
-
-    // coloca na var pokemons todos os pokemons
-    data.results.forEach((pokemon) => {
-      const pokemonData = fetchPokemonByURL(pokemon.url);
-      
-      pokemons.push(pokemonData);
-    });
+    return await Promise.all(data.results.map(pokemon => fetchPokemonByURL(pokemon.url)));
+  } catch (error) {
+    alert("Falha ao carregar Pokémons:", error);
+    return []; // Retorna array vazio em caso de erro
   }
+}
 
-  // se a var pokemons não for alterada, retorna o valor que já está guardado, se for vazio, apresenta um erro
-  return pokemons;
+// renderiza os pokemons na tela, usando array global com as informações de pokemons
+function renderPokemon(pokemons) {
+  // limpa o container de pokemons
+  mainContainer.innerHTML = "";
+
+  pokemons.forEach((pokemon) => {
+    let imgPokemon =
+      pokemon["sprites"]["versions"]["generation-v"]["black-white"]["animated"][
+        "front_default"
+      ];
+    let namePokemon = pokemon["name"];
+    let idPokemon = pokemon["id"];
+
+    // adicionar cards com os dados dos pokemons
+    mainContainer.innerHTML += `<div class="pokemon-card"> <img id="pokemon-image" src="${imgPokemon}"> <h3> <span id="pokemon-id">${idPokemon}</span> - <span id="pokemon-name">${namePokemon}</span> </h3> </div>`;
+  });
 }
 
 async function main() {
-  // assim que entrar na página
-  document.addEventListener("DOMContentLoaded", () => {
-    // assim que entrar no documento, busca todos os pokemons
-    pokemons = fetchAllPokemons();
+  document.addEventListener("DOMContentLoaded", async () => {
+    try {
+      // Aguarda a resolução da Promise
+      pokemons = await fetchAllPokemons();
+      
+      if (pokemons.length > 0) {
+        renderPokemon(pokemons);
+      } else {
+        alert("Nenhum Pokémon encontrado.");
+      }
+    } catch (error) {
+      alert("Erro ao carregar Pokémons:", error);
+    }
   });
 }
 

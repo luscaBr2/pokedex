@@ -1,5 +1,15 @@
-:root {
-  --tamanho-borda-card: 4px;
+/* Seleciona o "trilho" do scrollbar */
+::-webkit-scrollbar {
+    background-color: transparent;
+    border-radius: 50px;
+    width: 5px;
+}
+
+/* Seleciona a "barra" do scrollbar */
+::-webkit-scrollbar-thumb {
+    background-color: #bb1010af;
+    border-radius: 50px;
+    width: 5px;
 }
 
 body {
@@ -49,17 +59,8 @@ header {
     border-radius: 20px;
 }
 
-/* IA */
-
 .container-pesquisa {
     color: black;
-}
-
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    font-size: 16px;
 }
 
 #sugestoes-pesquisa {
@@ -92,26 +93,11 @@ input[type="text"] {
     background-color: #f0f0f0;
 }
 
+/* Tira a borda inferior do input quando há sugestões */
 input.tem-sugestao {
     border-bottom-left-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
 }
-
-/* Seleciona o "trilho" do scrollbar */
-::-webkit-scrollbar {
-    background-color: transparent;
-    border-radius: 50px;
-    width: 5px;
-}
-
-/* Seleciona a "barra" do scrollbar */
-::-webkit-scrollbar-thumb {
-    background-color: #bb1010af;
-    border-radius: 50px;
-    width: 5px;
-}
-
-/* ================================================== */
 
 main {
     margin-top: 100px;
@@ -128,27 +114,37 @@ main {
 
 .pokemon-card {
     background-color: white;
-    border-radius: 8px;
+    border-radius: 25px;
     padding: 30px 35px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     cursor: pointer;
-
-    /* Borda da mesma cor para evitar o movimento 
-    dos outros elementos ao executar o hover com 
-    borda customizada */
+    height: 250px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border: 4px solid #fff;
 }
 
 .pokemon-card img {
-    width: 115px;
-    height: 115px;
+    width: 100%;
+    height: 100%;
     image-rendering: pixelated;
-    margin: auto;
+    object-fit: contain;
     margin-bottom: 30px;
 }
 
 .pokemon-card:hover {
     transform: scale(1.10);
     border: 4px solid #ff1616;
+}
+
+.pokemon-card h3 {
+    width: 150%;
+}
+
+#pokemon-name {
+    text-transform: capitalize;
 }
