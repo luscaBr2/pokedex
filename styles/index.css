@@ -51,6 +51,7 @@ header {
 }
 
 #pesquisa {
+    text-transform: capitalize;
     position: fixed;
     right: clamp(1rem, 10rem, 3rem);
     /* Centraliza a caixa de pesquisa no centro do header*/
@@ -87,6 +88,7 @@ header {
 .sugestao {
     padding: 10px;
     cursor: pointer;
+    text-transform: capitalize;
 }
 
 .sugestao:hover {
@@ -100,11 +102,74 @@ input.tem-sugestao {
 }
 
 main {
-    margin-top: 100px;
+    margin-top: clamp(120px, 10%, 16%);
     text-align: center;
 }
 
+#erro{
+    width: 5rem;
+    position: fixed;
+    top: 50%;
+    transform: translate(-27%, -50%);
+
+}
+
+/* Loading */
+
+#loading {
+    width: 44.8px;
+    height: 44.8px;
+    color: #ff1616;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(11.2px, currentColor 94%, #0000);
+}
+
+#loading:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(10.08px at bottom right, #0000 94%, currentColor) top left,
+        radial-gradient(10.08px at bottom left, #0000 94%, currentColor) top right,
+        radial-gradient(10.08px at top right, #0000 94%, currentColor) bottom left,
+        radial-gradient(10.08px at top left, #0000 94%, currentColor) bottom right;
+    background-size: 22.4px 22.4px;
+    background-repeat: no-repeat;
+    animation: loader 1.5s infinite cubic-bezier(0.3, 1, 0, 1);
+}
+
+#mensagem-interna {
+    color: #fff;
+    font-size: 1.5rem;
+    position: fixed;
+    top: 57%;
+    transform: translate(-10%, 0);
+    text-align: center;
+}
+
+@keyframes loader {
+    33% {
+        inset: -11.2px;
+        transform: rotate(0deg);
+    }
+
+    66% {
+        inset: -11.2px;
+        transform: rotate(90deg);
+    }
+
+    100% {
+        inset: 0;
+        transform: rotate(90deg);
+    }
+}
+
+/* ======== */
+
 .container-pokemon {
+    margin: 0 2rem;
     display: flex;
     gap: 15px;
     flex-direction: row;
