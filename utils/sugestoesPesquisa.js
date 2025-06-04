@@ -3,25 +3,20 @@
 const searchInput = document.getElementById("pesquisa");
 const suggestionsBox = document.getElementById("sugestoes-pesquisa");
 
-const suggestions = [
-  "Abacaxi",
-  "Banana",
-  "Cereja",
-  "Damasco",
-  "Estrela",
-  "Foguete",
-  "Gato",
-  "Girassol",
-  "Helicóptero",
-  "Igreja",
-];
+let sugestoes = []; // var global que vai guardar as sugestões de pesquisa
+
+function atualizarSugestoes(pokemons) {
+  pokemons.forEach((pokemon) => {
+    sugestoes.push(pokemon.id + " - " + pokemon.name);
+  });
+}
 
 searchInput.addEventListener("input", () => {
   const query = searchInput.value.toLowerCase();
   suggestionsBox.innerHTML = ""; // limpa o que tiver dentro da div
 
   if (query.length >= 1) {
-    const buscaFiltrada = suggestions.filter((item) =>
+    const buscaFiltrada = sugestoes.filter((item) =>
       item.toLowerCase().includes(query)
     );
 
