@@ -1,2 +1,5 @@
 Colocar filtro de tipos, lendários, pseudo-lendários, etc
 
+Selecionar 2 pokemons e mostrar se eles seriam super efetivos ou não
+
+integração com a API do gemini
