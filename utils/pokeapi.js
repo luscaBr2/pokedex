@@ -32,6 +32,9 @@ function esconderErro() {
   imgErro.classList.add("hidden");
 }
 
+function resetContainerPokemon() {
+  mainContainer.innerHTML = `<div id="erro" class="hidden"><img src="https://img.icons8.com/?size=100&id=8122&format=png&color=ff1616" alt="Erro"></div><div id="loading"></div><div id="mensagem-interna"></div>`;
+}
 async function requisitarAPI(linkRequisicao) {
   try {
     mostrarLoading();
@@ -42,7 +45,7 @@ async function requisitarAPI(linkRequisicao) {
     // se a resposta da API não for 200, retorna erro
     if (!APIResponse.ok)
       throw new Error("Erro na requisição da API: " + APIResponse.status);
-    
+
     editarMensagemInterna("Conectado com a API :) <br> Buscando pokemons...");
 
     const data = await APIResponse.json();
@@ -63,7 +66,6 @@ async function fetchPokemonByURL(url) {
   try {
     const data = requisitarAPI(url);
     return data;
-
   } catch (error) {
     mostrarErro();
     esconderLoading();
@@ -77,10 +79,8 @@ async function fetchPokemonByURL(url) {
 /// busca um pokemon pelo nome ou id
 async function fetchPokemon(pokemon) {
   try {
-
     const data = requisitarAPI("https://pokeapi.co/api/v2/pokemon/" + pokemon);
     return data;
-
   } catch (error) {
     mostrarErro();
     esconderLoading();
@@ -92,7 +92,6 @@ async function fetchPokemon(pokemon) {
 
 async function fetchAllPokemons() {
   try {
-
     const data = await requisitarAPI(
       `https://pokeapi.co/api/v2/pokemon?limit=151&offset=0`
     );
@@ -101,7 +100,6 @@ async function fetchAllPokemons() {
     return await Promise.all(
       data.results.map((pokemon) => fetchPokemonByURL(pokemon.url))
     );
-
   } catch (error) {
     mostrarErro();
     esconderLoading();
@@ -123,11 +121,11 @@ function renderPokemon(pokemons) {
         pokemon["sprites"]["versions"]["generation-v"]["black-white"][
           "animated"
         ]["front_default"];
-      let namePokemon = pokemon["name"];
+      let nomePokemon = pokemon["name"];
       let idPokemon = pokemon["id"];
 
       // adicionar cards com os dados dos pokemons
-      mainContainer.innerHTML += `<div class="pokemon-card"> <img id="pokemon-image" src="${imgPokemon}"> <h3> <span id="pokemon-id">${idPokemon}</span> - <span id="pokemon-name">${namePokemon}</span> </h3> </div>`;
+      mainContainer.innerHTML += `<div class="pokemon-card"> <img id="pokemon-image" src="${imgPokemon}"> <h3> <span id="pokemon-id">${idPokemon}</span> - <span id="pokemon-name">${nomePokemon}</span> </h3> </div>`;
     });
   } catch (error) {
     mostrarErro();
@@ -140,7 +138,6 @@ function renderPokemon(pokemons) {
 async function main() {
   document.addEventListener("DOMContentLoaded", async () => {
     try {
-
       // Aguarda a resolução das Promises e retorna um array
       pokemons = await fetchAllPokemons();
 
@@ -151,7 +148,6 @@ async function main() {
       }
 
       atualizarSugestoes(pokemons); // função presente no arquivo utils\sugestoesPesquisa.js
-
     } catch (error) {
       mostrarErro();
       esconderLoading();
