@@ -1,3 +1,5 @@
+usar cache para evitar muitas chamadas na api
+
 Colocar filtro de tipos, lendários, pseudo-lendários, etc
 
 Selecionar 2 pokemons e mostrar se eles seriam super efetivos ou não

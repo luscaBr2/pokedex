@@ -50,6 +50,16 @@ header {
     margin-top: 10px;
 }
 
+#botaoReset {
+    cursor: pointer;
+    display: flex;
+    position: fixed;
+    transform: translateY(45%);
+    right: 18rem;
+    justify-content: center;
+}
+
+
 #pesquisa {
     text-transform: capitalize;
     position: fixed;
@@ -106,7 +116,7 @@ main {
     text-align: center;
 }
 
-#erro{
+#erro {
     width: 5rem;
     position: fixed;
     top: 50%;
@@ -140,15 +150,6 @@ main {
     animation: loader 1.5s infinite cubic-bezier(0.3, 1, 0, 1);
 }
 
-#mensagem-interna {
-    color: #fff;
-    font-size: 1.5rem;
-    position: fixed;
-    top: 57%;
-    transform: translate(-10%, 0);
-    text-align: center;
-}
-
 @keyframes loader {
     33% {
         inset: -11.2px;
@@ -164,6 +165,15 @@ main {
         inset: 0;
         transform: rotate(90deg);
     }
+}
+
+#mensagem-interna {
+    color: #fff;
+    font-size: 1.5rem;
+    position: fixed;
+    top: 57%;
+    transform: translate(-10%, 0);
+    text-align: center;
 }
 
 /* ======== */

@@ -22,10 +22,13 @@
         </figure>
 
         <div class="container-pesquisa">
-            <input autocomplete="off" type="search" id="pesquisa" placeholder="Buscar pokémon">
-            <div id="sugestoes-pesquisa" class="hidden">
+            <img id="botaoReset" width="50" height="50" title="Reiniciar busca"
+                src="https://img.icons8.com/sf-black-filled/64/FFFFFF/recurring-appointment.png" alt="Reiniciar busca"
+                onclick="resetarBusca()" />
 
-            </div>
+            <input autocomplete="off" type="search" id="pesquisa" placeholder="Buscar pokémon">
+
+            <div id="sugestoes-pesquisa" class="hidden"></div>
         </div>
     </header>
     <main>
